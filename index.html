@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رابطة النشاطات العلمية والتقنية للشباب قسنطينة</title>
+    <!-- خط كايرو -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0b3d91; 
+            --secondary: #1e90ff; 
+            --accent: #ff4500; 
+            --bg-color: #f4f7f6;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* شريط التنقل */
+        header {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        /* القسم الرئيسي (Hero) */
+        .hero {
+            background: linear-gradient(rgba(11, 61, 145, 0.85), rgba(30, 144, 255, 0.85)), url('https://via.placeholder.com/1920x800') center/cover;
+            color: var(--text-light);
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: #ffda75; /* لون ذهبي للفت الانتباه */
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            backdrop-filter: blur(5px);
+        }
+
+        .info-box ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 1.2rem;
+        }
+
+        .info-box ul li {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        /* الأزرار */
+        .btn {
+            background-color: var(--accent);
+            color: var(--text-light);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background-color: #e03e00;
+            transform: scale(1.05);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--text-light);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-light);
+            color: var(--primary);
+        }
+
+        /* الأقسام العامة */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* من نحن والصور */
+        .about-text {
+            text-align: justify;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        /* الجهات المنظمة */
+        .organizers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .org-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            width: 220px;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 4px solid var(--secondary);
+        }
+
+        /* مسارات المسابقة */
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .track-card {
+            background-color: #fff;
+            padding: 25px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #e0e0e0;
+        }
+
+        .track-card:hover {
+            background-color: var(--secondary);
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .track-card h3 {
+            font-size: 1.5rem;
+        }
+
+        /* القواعد */
+        .rules-section {
+            text-align: center;
+            background-color: var(--primary);
+            color: #fff;
+            border-radius: 15px;
+            padding: 60px 20px;
+            margin: 40px 10%;
+        }
+
+        /* التواصل */
+        .contact-info {
+            text-align: center;
+            font-size: 1.2rem;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* التذييل */
+        footer {
+            background-color: var(--primary);
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h2 { font-size: 2.2rem; }
+            .info-box ul { flex-direction: column; }
+            section { padding: 50px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الترويسة -->
+    <header>
+        <h1 > مديري الشباب والرياضة قسنطينة - رابطة النشاطات العلمية والتقنية للشباب قسنطينة </h1>
+        <nav>
+            <ul>
+                <li><a href="#about">من نحن</a></li>
+                <li><a href="#organizers">الجهات المنظمة</a></li>
+                <li><a href="#tracks">المسارات</a></li>
+                <li><a href="#rules">القواعد</a></li>
+                <li><a href="#register">التسجيل</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 1. القسم الرئيسي (المواعيد، المحاور، الأزرار) -->
+    <section class="hero">
+        <h2>المعرض العلمي الوطني الجزائري 2026</h2>
+        <p class="subtitle">شارك في 9 محاور للابتكار والتميز العلمي</p>
+        
+        <div class="info-box">
+            <ul>
+                <li>👥 <strong>الفئة العمرية:</strong> 12 إلى 18 عاماً</li>
+                <li>📅 <strong>بداية التسجيل:</strong> 15 جوان 2026</li>
+                <li>⏳ <strong>نهاية التسجيل:</strong> 4 جويلية 2026</li>
+                <li>🚀 <strong>العرض الفعلي:</strong> 11 إلى 14 جويلية 2026</li>
+            </ul>
+        </div>
+
+        <div>
+            <a href="#register" class="btn">التسجيل الآن</a>
+            <a href="#tracks" class="btn btn-outline">معاينة المسارات</a>
+        </div>
+    </section>
+
+    <!-- 2. من نحن -->
+    <section id="about">
+        <h2 class="section-title">من نحن</h2>
+        <p class="about-text">
+            نادي بصمة تك هي مجموعة شبابية علمية في الجزائر، تُعنى بتمكين المبتكرين الشباب من خلال العلوم والتكنولوجيا والتطوير المهني. نعمل تحت مظلة رابطة الأنشطة العلمية والتقنية للشباب بقسنطينة تحت اشراف مديرية الشباب والرياضة قسنطينة، ونجمع بين الطلاب والشغوفين لتعزيز الابتكار. لقد مثل فريقنا الجزائر بكل فخر في العديد من مسابقات الابتكار الدولية واكتسب خبرات نوعية. نستعد اليوم لإطلاق النسخة الأولى من معرضنا العلمي لخلق منصة وطنية تلهم المواهب الشابة وتحتضن أفكارهم.
+        </p>
+        <!-- مساحة الصور -->
+        <div class="gallery">
+            <!-- يمكنك استبدال الروابط أدناه بروابط صور فعلية من المعرض -->
+            <img src="https://via.placeholder.com/400x300?text=صورة+من+النشاط+1" alt="نشاط علمي 1">
+            <img src="https://via.placeholder.com/400x300?text=صورة+من+النشاط+2" alt="نشاط علمي 2">
+            <img src="https://via.placeholder.com/400x300?text=صورة+من+النشاط+3" alt="نشاط علمي 3">
+            <img src="https://via.placeholder.com/400x300?text=صورة+من+النشاط+4" alt="نشاط علمي 4">
+            <img src="https://via.placeholder.com/400x300?text=صورة+من+النشاط+4" alt="نشاط علمي 5">
+            <img src="https://via.placeholder.com/400x300?text=صورة+من+النشاط+4" alt="نشاط علمي 6">
+        </div>
+    </section>
+
+    <!-- 3. الجهات المنظمة -->
+    <section id="organizers" style="background-color: #e9ecef;">
+        <h2 class="section-title">الجهات المنظمة والرعاية</h2>
+        <div class="organizers">
+            <div class="org-card">وزارة الشباب والرياضة</div>
+            <div class="org-card">رابطة النشاطات العلمية والتقنية للشباب (قسنطينة)</div>
+            <div class="org-card">نادي بصمة تك</div>
+            <div class="org-card">جامعة قسنطينة 3 - صالح بوبنيدر</div>
+        </div>
+    </section>
+
+    <!-- 4. مسارات المسابقة (9 محاور) -->
+    <section id="tracks">
+        <h2 class="section-title">مسارات المسابقة (9 محاور للابتكار)</h2>
+        <div class="tracks-grid">
+            <div class="track-card"><h3>🧪 الكيمياء</h3></div>
+            <div class="track-card"><h3>⚕️ الطب</h3></div>
+            <div class="track-card"><h3>⚙️ الهندسة</h3></div>
+            <div class="track-card"><h3>🔭 الفيزياء</h3></div>
+            <div class="track-card"><h3>🌱 البيئة</h3></div>
+            <div class="track-card"><h3>🔬 الأحياء</h3></div>
+            <div class="track-card"><h3>🤝 العلوم الاجتماعية</h3></div>
+            <div class="track-card"><h3>📐 الرياضيات</h3></div>
+            <div class="track-card"><h3>💻 علوم الحاسوب</h3></div>
+        </div>
+    </section>
+
+    <!-- 5. جدول القواعد (زر تحميل الملف) -->
+    <div id="rules" class="rules-section">
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">جدول القواعد واللوائح</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px;">
+            يرجى قراءة جميع الشروط والقواعد الخاصة بالمسابقة وطريقة تحضير المشاريع (الملصقات، العروض التقديمية، والفيديوهات) قبل البدء في التسجيل.
+        </p>
+        <!-- استبدل "rules.pdf" برابط ملف الـ PDF الحقيقي الخاص بك -->
+        <a href="دليل المعرض العلمي الوطني (3).pdf" download class="btn" style="background-color: #fff; color: var(--primary);">
+            📥 تحميل ملف القواعد واللوائح
+        </a>
+    </div>
+
+    <!-- فضاء التسجيل -->
+    <section id="register" style="background-color: #e9ecef;">
+        <h2 class="section-title">فضاء التسجيل</h2>
+        <div style="background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center;">
+            <h3 style="color: var(--primary); margin-bottom: 20px;">استمارة المشاركة الإلكترونية</h3>
+            <!-- استبدل الرابط برابط Google Form الخاص بك -->
+            <iframe 
+                src="https://forms.gle/Nru5k9YRdcS5GqhP8" 
+                width="100%" 
+                height="800" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0">
+                جاري تحميل الاستمارة...
+            </iframe>
+        </div>
+    </section>
+
+    <!-- 6. التواصل -->
+    <section id="contact">
+        <h2 class="section-title">التواصل معنا</h2>
+        <div class="contact-info">
+            <p style="margin-bottom: 10px;"><strong>📍 العنوان:</strong> القطب الرياضي عبد الحميد دعماش </p>
+            <p style="margin-bottom: 10px;"><strong>📧 البريد الإلكتروني:</strong> basma.tech25@gmail.com</p>
+            <p><strong>📞 الهاتف / واتساب:</strong>97 31 75 213+</p>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <p>&copy; 2026 جميع الحقوق محفوظة للمعرض العلمي الوطني الجزائري - نادي بصمة تك</p>
+    </footer>
+
+    <!-- التمرير السلس للروابط -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
